@@ -1,0 +1,114 @@
+---
+title: "Olympic Games"
+format: html
+---
+
+```{python}
+#| label: load-packages
+from plotnine import *
+import great_tables as gt
+import pandas as pd
+```
+
+```{python}
+#| label: load-data
+olympics_full = pd.read_csv("data/olympics.csv", low_memory = False)
+```
+
+```{python}
+#| label: prep-data
+# Filter for Summer season and non-NA medals
+olympics = olympics_full[(olympics_full["season"] == "Summer") & (olympics_full["medal"].notna())]
+
+# Split the team column at "-" into two columns
+split_data = olympics["team"].str.split("-", n = 1, expand = True)
+olympics.loc[:, "team"] = split_data[0]
+
+# Reorder the medal column categories
+olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
+```
+
+## Medals by sport
+
+```{python}
+#| warning: false
+# Lump the sport column to top 15 categories, grouping others as Other
+top_15_sports = olympics["sport"].value_counts().nlargest(15).index
+olympics["sport"] = olympics["sport"].apply(lambda x: x if x in top_15_sports else "Other")
+
+# Convert the sport column to a categorical type with order based on frequency, and reverse the order
+olympics["sport"] = pd.Categorical(olympics["sport"], categories = olympics["sport"].value_counts().index[::-1])
+
+# Move the Other category of the sport column to the beginning
+new_order = ["Other"] + [cat for cat in olympics["sport"].cat.categories if cat != "Other"]
+olympics["sport"] = olympics["sport"].cat.reorder_categories(new_order)
+
+# Plot
+(
+    ggplot(olympics, aes(x = "sport", fill = "medal"))
+    + geom_bar()
+    + coord_flip()
+    + guides(fill = guide_legend(reverse = True)) 
+    + labs(x = "", y = "", fill = "Medal") 
+    + theme_minimal() 
+    + theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 5)
+    )
+)
+```
+
+## Medals by year
+
+```{python}
+# Count the occurrences of each medal per year
+olympics_count = olympics.groupby(["year", "medal"], observed=True).size().reset_index(name = "n")
+
+# Plot
+(
+    ggplot(olympics_count, aes(x = "year", y = "n", color = "medal")) 
+    + geom_point(size = 0.5) 
+    + geom_line() 
+    + guides(color = guide_legend(reverse = True)) 
+    + scale_x_continuous(breaks = range(1896, 2020, 8)) 
+    + labs(x = "Year", y = "", color = "Medal") 
+    + theme_minimal() 
+    + theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 2.5)
+    )
+)
+```
+
+## Medals by country
+
+```{python}
+# Count the occurrences of each medal per team
+olympics_count = olympics.groupby(["team", "medal"]).size().reset_index(name="n")
+
+# Pivot olympics_count to get medals as columns
+olympics_pivot = olympics_count.pivot_table(index = "team", columns = "medal", values = "n", fill_value = 0)
+
+# Calculate the total number of medals
+olympics_pivot["Total"] = olympics_pivot[["Bronze", "Gold", "Silver"]].sum(axis=1)
+
+# Reset the index and rearrange columns
+olympics_pivot = olympics_pivot.reset_index()
+olympics_pivot = olympics_pivot[["team", "Gold", "Silver", "Bronze", "Total"]]
+
+# Sort by Total medals, then team
+olympics_pivot = olympics_pivot.sort_values(by=["Total", "team"], ascending=[False, True])
+
+# Rename the team column to Team
+olympics_pivot.rename(columns={"team": "Team"}, inplace=True)
+
+(
+    gt.GT(olympics_pivot)
+)
+```

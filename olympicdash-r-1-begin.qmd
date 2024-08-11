@@ -1,0 +1,92 @@
+---
+title: "Olympic Games"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| message: false
+library(tidyverse)
+library(gt)
+```
+
+```{r}
+#| label: load-data
+#| message: false
+olympics_full <- read_csv("data/olympics.csv")
+```
+
+```{r}
+#| label: prep-data
+olympics <- olympics_full |>
+  filter(
+    season == "Summer",
+    !is.na(medal)
+  ) |>
+  separate_wider_delim(cols = team, names = c("team", "suffix"), delim = "-", too_many = "merge", too_few = "align_start") |>
+  select(-suffix) |>
+  mutate(medal = fct_relevel(medal, "Bronze", "Silver", "Gold"))
+```
+
+## Medals by sport
+
+```{r}
+olympics |>
+  mutate(
+    sport = fct_lump_n(sport, n = 15),
+    sport = fct_infreq(sport),
+    sport = fct_rev(sport),
+    sport = fct_relevel(sport, "Other", after = 0)
+  ) |>
+  ggplot(aes(y = sport, fill = medal)) +
+  geom_bar() +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = "Medal"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0.9, 0.2),
+    legend.direction = "horizontal",
+    legend.background = element_rect(fill = "white", color = "gray")
+  )
+```
+
+## Medals by year
+
+```{r}
+olympics |>
+  count(year, medal) |>
+  ggplot(aes(x = year, y = n, color = medal)) +
+  geom_point(size = 0.5) +
+  geom_line() +
+  guides(color = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(breaks = seq(1896, 2020, 8)) +
+  labs(
+    x = "Year",
+    y = NULL,
+    color = "Medal"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0.9, 0.2),
+    legend.direction = "horizontal",
+    legend.background = element_rect(fill = "white", color = "gray")
+  )
+```
+
+## Medals by country
+
+```{r}
+olympics |>
+  count(team, medal) |>
+  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
+  mutate(Total = Bronze + Gold + Silver) |>
+  relocate(Team = team, Gold, Silver, Bronze, Total) |>
+  arrange(desc(Total), Team) |>
+  gt()
+```
