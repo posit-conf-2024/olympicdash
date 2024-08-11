@@ -12,7 +12,6 @@ logo: images/olympics-logo.svg
 #| label: load-packages
 #| message: false
 library(tidyverse)
-library(scales)
 library(gt)
 ```
 
