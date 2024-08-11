@@ -1,0 +1,3976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Olympic Games</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="olympicdash-r_files/libs/clipboard/clipboard.min.js"></script>
+<script src="olympicdash-r_files/libs/quarto-html/quarto.js"></script>
+<script src="olympicdash-r_files/libs/quarto-html/popper.min.js"></script>
+<script src="olympicdash-r_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="olympicdash-r_files/libs/quarto-html/anchor.min.js"></script>
+<link href="olympicdash-r_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="olympicdash-r_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="olympicdash-r_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="olympicdash-r_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="olympicdash-r_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="olympicdash-r_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/stickythead.js"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="olympicdash-r_files/libs/quarto-dashboard/components.js"></script>
+<link href="olympicdash-r_files/libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+
+
+</head>
+
+<body class="quarto-dashboard dashboard-fill fullcontent">
+
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+    <a href="#"><img src="images/olympics-logo.svg" alt="" class="navbar-logo d-inline-block"></a>
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Olympic Games</a></div>
+        
+        
+      </div>
+    </div>
+<div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://github.com/posit-conf-2024/weatherdash/" title="GitHub"><i class="bi bi-github"></i></a></div></div>
+</nav>
+</header>
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">  
+
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 60fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="Medals by sport" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title">Medals by sport</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="olympicdash-r_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="Medals by year" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title">Medals by year</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="olympicdash-r_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="Medals by country" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title">Medals by country</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div id="ijxnrtyjnf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#ijxnrtyjnf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ijxnrtyjnf thead, #ijxnrtyjnf tbody, #ijxnrtyjnf tfoot, #ijxnrtyjnf tr, #ijxnrtyjnf td, #ijxnrtyjnf th {
+  border-style: none;
+}
+
+#ijxnrtyjnf p {
+  margin: 0;
+  padding: 0;
+}
+
+#ijxnrtyjnf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ijxnrtyjnf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ijxnrtyjnf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ijxnrtyjnf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ijxnrtyjnf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ijxnrtyjnf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ijxnrtyjnf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ijxnrtyjnf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ijxnrtyjnf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ijxnrtyjnf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ijxnrtyjnf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ijxnrtyjnf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ijxnrtyjnf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ijxnrtyjnf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ijxnrtyjnf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ijxnrtyjnf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ijxnrtyjnf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ijxnrtyjnf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ijxnrtyjnf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ijxnrtyjnf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ijxnrtyjnf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ijxnrtyjnf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ijxnrtyjnf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ijxnrtyjnf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ijxnrtyjnf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ijxnrtyjnf .gt_left {
+  text-align: left;
+}
+
+#ijxnrtyjnf .gt_center {
+  text-align: center;
+}
+
+#ijxnrtyjnf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ijxnrtyjnf .gt_font_normal {
+  font-weight: normal;
+}
+
+#ijxnrtyjnf .gt_font_bold {
+  font-weight: bold;
+}
+
+#ijxnrtyjnf .gt_font_italic {
+  font-style: italic;
+}
+
+#ijxnrtyjnf .gt_super {
+  font-size: 65%;
+}
+
+#ijxnrtyjnf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ijxnrtyjnf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ijxnrtyjnf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ijxnrtyjnf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ijxnrtyjnf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ijxnrtyjnf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ijxnrtyjnf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Team" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Team</th>
+<th id="Gold" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Gold</th>
+<th id="Silver" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Silver</th>
+<th id="Bronze" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Bronze</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">United States</td>
+<td class="gt_row gt_right" headers="Gold">2363</td>
+<td class="gt_row gt_right" headers="Silver">1251</td>
+<td class="gt_row gt_right" headers="Bronze">1126</td>
+<td class="gt_row gt_right" headers="Total">4740</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Soviet Union</td>
+<td class="gt_row gt_right" headers="Gold">830</td>
+<td class="gt_row gt_right" headers="Silver">635</td>
+<td class="gt_row gt_right" headers="Bronze">596</td>
+<td class="gt_row gt_right" headers="Total">2061</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Germany</td>
+<td class="gt_row gt_right" headers="Gold">568</td>
+<td class="gt_row gt_right" headers="Silver">515</td>
+<td class="gt_row gt_right" headers="Bronze">614</td>
+<td class="gt_row gt_right" headers="Total">1697</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Great Britain</td>
+<td class="gt_row gt_right" headers="Gold">501</td>
+<td class="gt_row gt_right" headers="Silver">594</td>
+<td class="gt_row gt_right" headers="Bronze">563</td>
+<td class="gt_row gt_right" headers="Total">1658</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">France</td>
+<td class="gt_row gt_right" headers="Gold">425</td>
+<td class="gt_row gt_right" headers="Silver">490</td>
+<td class="gt_row gt_right" headers="Bronze">515</td>
+<td class="gt_row gt_right" headers="Total">1430</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Italy</td>
+<td class="gt_row gt_right" headers="Gold">492</td>
+<td class="gt_row gt_right" headers="Silver">469</td>
+<td class="gt_row gt_right" headers="Bronze">425</td>
+<td class="gt_row gt_right" headers="Total">1386</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Australia</td>
+<td class="gt_row gt_right" headers="Gold">338</td>
+<td class="gt_row gt_right" headers="Silver">450</td>
+<td class="gt_row gt_right" headers="Bronze">506</td>
+<td class="gt_row gt_right" headers="Total">1294</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hungary</td>
+<td class="gt_row gt_right" headers="Gold">432</td>
+<td class="gt_row gt_right" headers="Silver">328</td>
+<td class="gt_row gt_right" headers="Bronze">363</td>
+<td class="gt_row gt_right" headers="Total">1123</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sweden</td>
+<td class="gt_row gt_right" headers="Gold">326</td>
+<td class="gt_row gt_right" headers="Silver">356</td>
+<td class="gt_row gt_right" headers="Bronze">332</td>
+<td class="gt_row gt_right" headers="Total">1014</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">China</td>
+<td class="gt_row gt_right" headers="Gold">334</td>
+<td class="gt_row gt_right" headers="Silver">317</td>
+<td class="gt_row gt_right" headers="Bronze">258</td>
+<td class="gt_row gt_right" headers="Total">909</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Russia</td>
+<td class="gt_row gt_right" headers="Gold">296</td>
+<td class="gt_row gt_right" headers="Silver">278</td>
+<td class="gt_row gt_right" headers="Bronze">324</td>
+<td class="gt_row gt_right" headers="Total">898</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Netherlands</td>
+<td class="gt_row gt_right" headers="Gold">235</td>
+<td class="gt_row gt_right" headers="Silver">283</td>
+<td class="gt_row gt_right" headers="Bronze">350</td>
+<td class="gt_row gt_right" headers="Total">868</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Japan</td>
+<td class="gt_row gt_right" headers="Gold">230</td>
+<td class="gt_row gt_right" headers="Silver">287</td>
+<td class="gt_row gt_right" headers="Bronze">333</td>
+<td class="gt_row gt_right" headers="Total">850</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">East Germany</td>
+<td class="gt_row gt_right" headers="Gold">339</td>
+<td class="gt_row gt_right" headers="Silver">277</td>
+<td class="gt_row gt_right" headers="Bronze">227</td>
+<td class="gt_row gt_right" headers="Total">843</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Canada</td>
+<td class="gt_row gt_right" headers="Gold">133</td>
+<td class="gt_row gt_right" headers="Silver">224</td>
+<td class="gt_row gt_right" headers="Bronze">313</td>
+<td class="gt_row gt_right" headers="Total">670</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Romania</td>
+<td class="gt_row gt_right" headers="Gold">161</td>
+<td class="gt_row gt_right" headers="Silver">200</td>
+<td class="gt_row gt_right" headers="Bronze">290</td>
+<td class="gt_row gt_right" headers="Total">651</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Denmark</td>
+<td class="gt_row gt_right" headers="Gold">168</td>
+<td class="gt_row gt_right" headers="Silver">218</td>
+<td class="gt_row gt_right" headers="Bronze">166</td>
+<td class="gt_row gt_right" headers="Total">552</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">South Korea</td>
+<td class="gt_row gt_right" headers="Gold">171</td>
+<td class="gt_row gt_right" headers="Silver">206</td>
+<td class="gt_row gt_right" headers="Bronze">175</td>
+<td class="gt_row gt_right" headers="Total">552</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Poland</td>
+<td class="gt_row gt_right" headers="Gold">111</td>
+<td class="gt_row gt_right" headers="Silver">185</td>
+<td class="gt_row gt_right" headers="Bronze">242</td>
+<td class="gt_row gt_right" headers="Total">538</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">West Germany</td>
+<td class="gt_row gt_right" headers="Gold">144</td>
+<td class="gt_row gt_right" headers="Silver">172</td>
+<td class="gt_row gt_right" headers="Bronze">188</td>
+<td class="gt_row gt_right" headers="Total">504</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Spain</td>
+<td class="gt_row gt_right" headers="Gold">109</td>
+<td class="gt_row gt_right" headers="Silver">243</td>
+<td class="gt_row gt_right" headers="Bronze">135</td>
+<td class="gt_row gt_right" headers="Total">487</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Brazil</td>
+<td class="gt_row gt_right" headers="Gold">109</td>
+<td class="gt_row gt_right" headers="Silver">175</td>
+<td class="gt_row gt_right" headers="Bronze">191</td>
+<td class="gt_row gt_right" headers="Total">475</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Norway</td>
+<td class="gt_row gt_right" headers="Gold">148</td>
+<td class="gt_row gt_right" headers="Silver">165</td>
+<td class="gt_row gt_right" headers="Bronze">154</td>
+<td class="gt_row gt_right" headers="Total">467</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Finland</td>
+<td class="gt_row gt_right" headers="Gold">132</td>
+<td class="gt_row gt_right" headers="Silver">118</td>
+<td class="gt_row gt_right" headers="Bronze">200</td>
+<td class="gt_row gt_right" headers="Total">450</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cuba</td>
+<td class="gt_row gt_right" headers="Gold">164</td>
+<td class="gt_row gt_right" headers="Silver">127</td>
+<td class="gt_row gt_right" headers="Bronze">116</td>
+<td class="gt_row gt_right" headers="Total">407</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Switzerland</td>
+<td class="gt_row gt_right" headers="Gold">96</td>
+<td class="gt_row gt_right" headers="Silver">175</td>
+<td class="gt_row gt_right" headers="Bronze">136</td>
+<td class="gt_row gt_right" headers="Total">407</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Belgium</td>
+<td class="gt_row gt_right" headers="Gold">93</td>
+<td class="gt_row gt_right" headers="Silver">157</td>
+<td class="gt_row gt_right" headers="Bronze">152</td>
+<td class="gt_row gt_right" headers="Total">402</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Yugoslavia</td>
+<td class="gt_row gt_right" headers="Gold">130</td>
+<td class="gt_row gt_right" headers="Silver">161</td>
+<td class="gt_row gt_right" headers="Bronze">92</td>
+<td class="gt_row gt_right" headers="Total">383</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bulgaria</td>
+<td class="gt_row gt_right" headers="Gold">53</td>
+<td class="gt_row gt_right" headers="Silver">142</td>
+<td class="gt_row gt_right" headers="Bronze">141</td>
+<td class="gt_row gt_right" headers="Total">336</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Czechoslovakia</td>
+<td class="gt_row gt_right" headers="Gold">79</td>
+<td class="gt_row gt_right" headers="Silver">144</td>
+<td class="gt_row gt_right" headers="Bronze">107</td>
+<td class="gt_row gt_right" headers="Total">330</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Argentina</td>
+<td class="gt_row gt_right" headers="Gold">91</td>
+<td class="gt_row gt_right" headers="Silver">84</td>
+<td class="gt_row gt_right" headers="Bronze">91</td>
+<td class="gt_row gt_right" headers="Total">266</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">New Zealand</td>
+<td class="gt_row gt_right" headers="Gold">85</td>
+<td class="gt_row gt_right" headers="Silver">55</td>
+<td class="gt_row gt_right" headers="Bronze">82</td>
+<td class="gt_row gt_right" headers="Total">222</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Unified Team</td>
+<td class="gt_row gt_right" headers="Gold">92</td>
+<td class="gt_row gt_right" headers="Silver">61</td>
+<td class="gt_row gt_right" headers="Bronze">67</td>
+<td class="gt_row gt_right" headers="Total">220</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">India</td>
+<td class="gt_row gt_right" headers="Gold">131</td>
+<td class="gt_row gt_right" headers="Silver">19</td>
+<td class="gt_row gt_right" headers="Bronze">40</td>
+<td class="gt_row gt_right" headers="Total">190</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ukraine</td>
+<td class="gt_row gt_right" headers="Gold">42</td>
+<td class="gt_row gt_right" headers="Silver">51</td>
+<td class="gt_row gt_right" headers="Bronze">95</td>
+<td class="gt_row gt_right" headers="Total">188</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Greece</td>
+<td class="gt_row gt_right" headers="Gold">42</td>
+<td class="gt_row gt_right" headers="Silver">76</td>
+<td class="gt_row gt_right" headers="Bronze">64</td>
+<td class="gt_row gt_right" headers="Total">182</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Austria</td>
+<td class="gt_row gt_right" headers="Gold">28</td>
+<td class="gt_row gt_right" headers="Silver">88</td>
+<td class="gt_row gt_right" headers="Bronze">53</td>
+<td class="gt_row gt_right" headers="Total">169</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Jamaica</td>
+<td class="gt_row gt_right" headers="Gold">38</td>
+<td class="gt_row gt_right" headers="Silver">75</td>
+<td class="gt_row gt_right" headers="Bronze">44</td>
+<td class="gt_row gt_right" headers="Total">157</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Croatia</td>
+<td class="gt_row gt_right" headers="Gold">54</td>
+<td class="gt_row gt_right" headers="Silver">48</td>
+<td class="gt_row gt_right" headers="Bronze">36</td>
+<td class="gt_row gt_right" headers="Total">138</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">South Africa</td>
+<td class="gt_row gt_right" headers="Gold">32</td>
+<td class="gt_row gt_right" headers="Silver">47</td>
+<td class="gt_row gt_right" headers="Bronze">52</td>
+<td class="gt_row gt_right" headers="Total">131</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Belarus</td>
+<td class="gt_row gt_right" headers="Gold">18</td>
+<td class="gt_row gt_right" headers="Silver">40</td>
+<td class="gt_row gt_right" headers="Bronze">66</td>
+<td class="gt_row gt_right" headers="Total">124</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Pakistan</td>
+<td class="gt_row gt_right" headers="Gold">42</td>
+<td class="gt_row gt_right" headers="Silver">45</td>
+<td class="gt_row gt_right" headers="Bronze">34</td>
+<td class="gt_row gt_right" headers="Total">121</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mexico</td>
+<td class="gt_row gt_right" headers="Gold">30</td>
+<td class="gt_row gt_right" headers="Silver">26</td>
+<td class="gt_row gt_right" headers="Bronze">51</td>
+<td class="gt_row gt_right" headers="Total">107</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kenya</td>
+<td class="gt_row gt_right" headers="Gold">34</td>
+<td class="gt_row gt_right" headers="Silver">41</td>
+<td class="gt_row gt_right" headers="Bronze">31</td>
+<td class="gt_row gt_right" headers="Total">106</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Nigeria</td>
+<td class="gt_row gt_right" headers="Gold">23</td>
+<td class="gt_row gt_right" headers="Silver">30</td>
+<td class="gt_row gt_right" headers="Bronze">46</td>
+<td class="gt_row gt_right" headers="Total">99</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Turkey</td>
+<td class="gt_row gt_right" headers="Gold">40</td>
+<td class="gt_row gt_right" headers="Silver">27</td>
+<td class="gt_row gt_right" headers="Bronze">28</td>
+<td class="gt_row gt_right" headers="Total">95</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Serbia</td>
+<td class="gt_row gt_right" headers="Gold">15</td>
+<td class="gt_row gt_right" headers="Silver">29</td>
+<td class="gt_row gt_right" headers="Bronze">41</td>
+<td class="gt_row gt_right" headers="Total">85</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Czech Republic</td>
+<td class="gt_row gt_right" headers="Gold">15</td>
+<td class="gt_row gt_right" headers="Silver">24</td>
+<td class="gt_row gt_right" headers="Bronze">32</td>
+<td class="gt_row gt_right" headers="Total">71</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Kazakhstan</td>
+<td class="gt_row gt_right" headers="Gold">19</td>
+<td class="gt_row gt_right" headers="Silver">22</td>
+<td class="gt_row gt_right" headers="Bronze">29</td>
+<td class="gt_row gt_right" headers="Total">70</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Iran</td>
+<td class="gt_row gt_right" headers="Gold">18</td>
+<td class="gt_row gt_right" headers="Silver">21</td>
+<td class="gt_row gt_right" headers="Bronze">29</td>
+<td class="gt_row gt_right" headers="Total">68</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">North Korea</td>
+<td class="gt_row gt_right" headers="Gold">16</td>
+<td class="gt_row gt_right" headers="Silver">15</td>
+<td class="gt_row gt_right" headers="Bronze">34</td>
+<td class="gt_row gt_right" headers="Total">65</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Serbia and Montenegro</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">26</td>
+<td class="gt_row gt_right" headers="Bronze">26</td>
+<td class="gt_row gt_right" headers="Total">64</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Uruguay</td>
+<td class="gt_row gt_right" headers="Gold">31</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">30</td>
+<td class="gt_row gt_right" headers="Total">63</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Lithuania</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">7</td>
+<td class="gt_row gt_right" headers="Bronze">48</td>
+<td class="gt_row gt_right" headers="Total">61</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ethiopia</td>
+<td class="gt_row gt_right" headers="Gold">22</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">22</td>
+<td class="gt_row gt_right" headers="Total">53</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ireland</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">29</td>
+<td class="gt_row gt_right" headers="Bronze">13</td>
+<td class="gt_row gt_right" headers="Total">51</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Chinese Taipei</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">28</td>
+<td class="gt_row gt_right" headers="Bronze">18</td>
+<td class="gt_row gt_right" headers="Total">49</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Azerbaijan</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">12</td>
+<td class="gt_row gt_right" headers="Bronze">25</td>
+<td class="gt_row gt_right" headers="Total">44</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Slovakia</td>
+<td class="gt_row gt_right" headers="Gold">13</td>
+<td class="gt_row gt_right" headers="Silver">17</td>
+<td class="gt_row gt_right" headers="Bronze">12</td>
+<td class="gt_row gt_right" headers="Total">42</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Indonesia</td>
+<td class="gt_row gt_right" headers="Gold">11</td>
+<td class="gt_row gt_right" headers="Silver">17</td>
+<td class="gt_row gt_right" headers="Bronze">13</td>
+<td class="gt_row gt_right" headers="Total">41</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Estonia</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">19</td>
+<td class="gt_row gt_right" headers="Total">38</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bahamas</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">13</td>
+<td class="gt_row gt_right" headers="Total">36</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Portugal</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">7</td>
+<td class="gt_row gt_right" headers="Bronze">24</td>
+<td class="gt_row gt_right" headers="Total">35</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Uzbekistan</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">7</td>
+<td class="gt_row gt_right" headers="Bronze">17</td>
+<td class="gt_row gt_right" headers="Total">33</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Chile</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">20</td>
+<td class="gt_row gt_right" headers="Total">32</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Georgia</td>
+<td class="gt_row gt_right" headers="Gold">8</td>
+<td class="gt_row gt_right" headers="Silver">6</td>
+<td class="gt_row gt_right" headers="Bronze">18</td>
+<td class="gt_row gt_right" headers="Total">32</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Trinidad and Tobago</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">17</td>
+<td class="gt_row gt_right" headers="Total">32</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Slovenia</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">15</td>
+<td class="gt_row gt_right" headers="Total">30</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Thailand</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">13</td>
+<td class="gt_row gt_right" headers="Total">30</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Australasia</td>
+<td class="gt_row gt_right" headers="Gold">20</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">29</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Union des Socits Franais de Sports Athletiques</td>
+<td class="gt_row gt_right" headers="Gold">17</td>
+<td class="gt_row gt_right" headers="Silver">12</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">29</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Colombia</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">14</td>
+<td class="gt_row gt_right" headers="Total">27</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Egypt</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">12</td>
+<td class="gt_row gt_right" headers="Total">27</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mongolia</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">14</td>
+<td class="gt_row gt_right" headers="Total">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">England</td>
+<td class="gt_row gt_right" headers="Gold">11</td>
+<td class="gt_row gt_right" headers="Silver">13</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">24</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Marinai della nave da guerra "Varese"</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">17</td>
+<td class="gt_row gt_right" headers="Total">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Phalainis ton Thorichtou "Hydra"</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">17</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">24</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ghana</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">22</td>
+<td class="gt_row gt_right" headers="Total">23</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Morocco</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">12</td>
+<td class="gt_row gt_right" headers="Total">23</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Cameroon</td>
+<td class="gt_row gt_right" headers="Gold">20</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">22</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Leander Club</td>
+<td class="gt_row gt_right" headers="Gold">18</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Zimbabwe</td>
+<td class="gt_row gt_right" headers="Gold">17</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">22</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Royal Club Nautique de Gand</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">21</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">21</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Latvia</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">20</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Toronto Argonauts</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">18</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Vesper Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">18</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">18</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Algeria</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">8</td>
+<td class="gt_row gt_right" headers="Total">17</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Iceland</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">15</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">17</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Large boat, Central Naval Prep School "Poros"</td>
+<td class="gt_row gt_right" headers="Gold">17</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">17</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Minerva Amsterdam</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">17</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Paraguay</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">17</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">17</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Armenia</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">16</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Chicago Athletic Association</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">16</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">16</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Malaysia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">16</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cornwall</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">15</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Frankfurt Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">15</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">15</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Moseley Wanderers</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">15</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Peru</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">14</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">15</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Venezuela</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">10</td>
+<td class="gt_row gt_right" headers="Total">15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Montenegro</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">14</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">14</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Fiji</td>
+<td class="gt_row gt_right" headers="Gold">13</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">13</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Galt Football Club</td>
+<td class="gt_row gt_right" headers="Gold">13</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tunisia</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">13</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">USFSA</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">13</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Angelita</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Devon and Somerset Wanderers</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mohawk Indians</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">12</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">New York Athletic Club</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">St. Louis Amateur Athletic Association</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">12</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">St. Rose</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">12</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Winnipeg Shamrocks</td>
+<td class="gt_row gt_right" headers="Gold">12</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bohemia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">10</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bucintoro Venezia</td>
+<td class="gt_row gt_right" headers="Gold">11</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Christian Brothers' College</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Llanoria</td>
+<td class="gt_row gt_right" headers="Gold">11</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Missouri Athletic Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">11</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Racing Club de France</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Scotland</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">11</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Smyrna</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">11</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Thessalonki</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">11</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Univ. of Brussels</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">11</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Upton Park FC</td>
+<td class="gt_row gt_right" headers="Gold">11</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Wales</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">11</td>
+<td class="gt_row gt_right" headers="Total">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Brussels Swimming and Water Polo Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Crabe II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Erna Signe</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gitana</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hera</td>
+<td class="gt_row gt_right" headers="Gold">10</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Magda IX</td>
+<td class="gt_row gt_right" headers="Gold">10</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mouchette</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Philippines</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Trans</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">10</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">United States Golf Association</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">10</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Western Golf Association</td>
+<td class="gt_row gt_right" headers="Gold">10</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Atlanta</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Berliner Ruderverein von 1876</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cambridge University Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Heira II</td>
+<td class="gt_row gt_right" headers="Gold">9</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Israel</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">New College, Oxford</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Pistoja/Firenze</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">9</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Puerto Rico</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Quand</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">9</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Singapore</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Aschenbrodel</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Cincinnati Archers</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Favorite</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">K Division Metropolitan Police Team</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">8</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Kitty</td>
+<td class="gt_row gt_right" headers="Gold">8</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Liverpool Police Team</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">London City Police</td>
+<td class="gt_row gt_right" headers="Gold">8</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Martha</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Moldova</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Omas Helliniki P. S.</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">8</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Pupilles de Neptune de Lille #2</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">8</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Socit Nautique de Bayonne</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">8</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Socit Nautique de la Basse Seine</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Dominican Republic</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Eleda</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Gallia II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Heatherbell</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Libellule de Paris</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">7</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Life boat naval ship "Spetsai"</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">7</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mosk II</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Nina</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">7</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Osborne Swimming Club, Manchester</td>
+<td class="gt_row gt_right" headers="Gold">7</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Uganda</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Argonaut Rowing Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Central Turnverein, Chicago</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Denmark/Sweden</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Favorite Hammonia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Germania II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gyrinus</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Haiti</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Hollandia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">6</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Italia</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">L'Aile VI</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Lerina</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Luxembourg</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">New York Turnverein, New York</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">6</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Olle</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Pan</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Philadelphia Turngemeinde, Philadelphia</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Santa Maria</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">6</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Saudi Arabia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Scotia</td>
+<td class="gt_row gt_right" headers="Gold">6</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Silja</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">6</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sylvia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Western Rowing Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">6</td>
+<td class="gt_row gt_right" headers="Total">6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ali</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Amateur Athletic Association</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Antwerpia V</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bera</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Cercle de l'Aviron Roubaix</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cobweb</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Djinn</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Elisabeth X</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Emily</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Foxhunters Hurlingham</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Gallant</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Germania Ruder Club, Hamburg</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Individual Olympic Athletes</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Irene</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kristiania Roklub</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Lalage</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Lucky Girl</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ludwigshafener Ruder Verein</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ludwigshafener Ruderverein</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Lully II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Lyn</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">May Be</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Milwaukee Athletic Club</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Namoussa</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nykjbings paa Falster</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ormsund Roklub</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Polyteknisk Roklub</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Qatar</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ralia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Roddklubben af 1912</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sans Atout</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sorais</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">St. Louis Southwest Turnverein #1</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">St. Louis Southwest Turnverein #2</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Taifun</td>
+<td class="gt_row gt_right" headers="Gold">5</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Thames Rowing Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tornado</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tritons Lillois</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tutti V</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Vinga</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">5</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">West Indies Federation</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">5</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">A North American Team</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Amstel Amsterdam</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ancora</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Atalanta Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">BLO Polo Club, Rugby</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bagatelle Polo Club, Paris</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bissbi</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Boston Archers</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Caprice</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Century Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Club Nautique de Lyon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Complex II</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Costa Rica</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Deutscher Schwimm Verband Berlin</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Elsie</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Fornebo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Heroine</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hi</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Hong Kong</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hurlingham</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Lebanon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Magdalen College Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mound City Rowing Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Namibia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">New York Athletic Club #1</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nina Claire</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Norna</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Potomac Archers</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Pupilles de Neptune de Lille</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">4</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Roehampton</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Scamasaxe</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sif</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sildra</td>
+<td class="gt_row gt_right" headers="Gold">4</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tajikistan</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Vietnam</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Vision</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">4</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Aphrodite</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bahrain</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ballerina IV</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Barion/Bari</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Barrenjoey</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Beatrijs III</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bingo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bluebottle</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bona Fide</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bonzo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Buraddoo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Cote d'Ivoire</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Dormy</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Edelweiss II</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Elisabeth V</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Encore</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gustel X</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Guyoni</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gwendoline</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hojwa</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Jo</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kerstin</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Kullan</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kyrgyzstan</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mac Miche</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Macky VI</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Marmi II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mascotte</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Minotaur</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mutafo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Nirefs</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nurdug II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Oranje</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Panama</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Rose Pompon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Rowing Club Castillon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Rush V</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Rush VII</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sarcelle</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Slaghoken</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Slaghoken II</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Snap</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Stella</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Syria</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tan</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tango</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tip</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Venilia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Web II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">White Lady</td>
+<td class="gt_row gt_right" headers="Gold">3</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Willem</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">3</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Zut</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">3</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Afghanistan</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Australia/Great Britain</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Baby</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bem II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Berliner Ruderclub</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bohemia/Great Britain</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Boreas</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Burundi</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Chuckles</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Comanche</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ecuador</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Espadarte</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Esterel</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ethnikos Gymnastikos Syllogos</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Falcon IV</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">France/Great Britain</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gem</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Gem IV</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Glider</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Great Britain/Germany</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Grenada</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Hilarius</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Humbug V</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Independent Rowing Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Jest</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Joy</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Jupiter</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kathleen</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Kurush II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kuwait</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Lady C</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Leander Club #1</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Leander Club #2</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Ma'Lindo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Margaret</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Merope</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Merope III</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mozambique</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Niger</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Pandora</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Ravenswood Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Seawanhaka Boat Club</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Shrew II</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sirene</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Skum</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Societ Nautique de la Marne</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sri Lanka</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Starita</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sunshine</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Suriname</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Swedish Star</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Swift</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Symphony</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Tanzania</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">United Arab Emirates</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">United Arab Republic</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">United States/France</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">2</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">United States/Great Britain</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Wannsee</td>
+<td class="gt_row gt_right" headers="Gold">2</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Widgeon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">2</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Zambia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Barbados</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Bermuda</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Bonaparte</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Botswana</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Brynhild</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Camille</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Carabinier</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cicely</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Clearwater</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Cyprus</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Digby</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Djibouti</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Don Schufro</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Elvis Va</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Eritrea</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Fantlet</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Femur</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Formosa</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Frimousse</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Gabon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Guatemala</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Guyana</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Iraq</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Jordan</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Kosovo</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Laurea</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Macedonia</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Mauritius</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Mignon</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Monaco</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nadine</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Netherlands Antilles</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Nrnberg</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Potsdam</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Rostock</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Salinero</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Satchmo</td>
+<td class="gt_row gt_right" headers="Gold">1</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Senegal</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Sudan</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Sunrise</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Togo</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">Tonga</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Team">Turquoise</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">0</td>
+<td class="gt_row gt_right" headers="Bronze">1</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Team">United States Virgin Islands</td>
+<td class="gt_row gt_right" headers="Gold">0</td>
+<td class="gt_row gt_right" headers="Silver">1</td>
+<td class="gt_row gt_right" headers="Bronze">0</td>
+<td class="gt_row gt_right" headers="Total">1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /container fluid -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>
