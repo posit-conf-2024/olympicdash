@@ -17,7 +17,7 @@ import pandas as pd
 
 ```{python}
 #| label: load-data
-olympics_full = pd.read_csv("data/olympics.csv", low_memory = False)
+olympics_full = pd.read_csv("../data/olympics.csv", low_memory = False)
 ```
 
 ```{python}
