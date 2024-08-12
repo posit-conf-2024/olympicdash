@@ -72,8 +72,6 @@ summer_olympics |>
 
 ### Row - Medals by year {height=40%}
 
-### Row - Medals by year {height=40%}
-
 ::: {.card title="Medals by year"}
 Due to World War II, no olympic games were held in 1940 and 1944.
 
