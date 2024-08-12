@@ -5,9 +5,7 @@ format:
     orientation: columns
     nav-buttons: [github]
     github: https://github.com/posit-conf-2024/olympicdash
-logo: images/olympics-logo.svg
-editor_options: 
-  chunk_output_type: console
+logo: ../images/olympics-logo.svg
 ---
 
 ```{r}

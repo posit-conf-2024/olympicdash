@@ -8,7 +8,7 @@ format:
     theme:
       - sketchy
       - style/olympicdash.scss
-logo: images/olympics-logo.svg
+logo: ../images/olympics-logo.svg
 ---
 
 ```{r}
