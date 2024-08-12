@@ -74,7 +74,6 @@ summer_olympics |>
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{r}
-#| title: Medals by year
 #| fig-asp: 0.3
 #| fig-width: 10
 summer_olympics |>
