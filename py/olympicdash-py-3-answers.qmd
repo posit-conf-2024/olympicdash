@@ -1,0 +1,428 @@
+---
+title: "Olympic Games"
+format: 
+  dashboard:
+    orientation: columns
+    nav-buttons: [github]
+    github: https://github.com/posit-conf-2024/olympicdash
+    theme:
+      - sketchy
+      - style/olympicdash.scss
+logo: ../images/olympics-logo.svg
+---
+
+```{python}
+#| label: load-packages
+from plotnine import *
+import great_tables as gt
+import pandas as pd
+```
+
+```{python}
+#| label: load-data
+olympics_full = pd.read_csv("../data/olympics.csv", low_memory = False)
+```
+
+```{python}
+#| label: prep-data
+# Filter for non-NA medals
+olympics = olympics_full[(olympics_full["medal"].notna())]
+
+# Split the team column at "-" into two columns
+split_data = olympics["team"].str.split("-", n = 1, expand = True)
+olympics.loc[:, "team"] = split_data[0]
+
+# Reorder the medal column categories
+olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
+```
+
+# 🌞 Summer Olympics
+
+```{python}
+#| label: prep-summmer-data
+summer_olympics = olympics[(olympics["season"] == "Summer")]
+summer_olympics.reset_index(drop=True, inplace=True)
+```
+
+## Column - Medals by sport and year {width=65%}
+
+### Row - Medals by sport {height=60%}
+
+```{python}
+#| title: Medals by sport
+#| warning: false
+# Lump the sport column to top 15 categories, grouping others as Other
+top_15_sports = summer_olympics["sport"].value_counts().nlargest(15).index
+summer_olympics["sport"] = summer_olympics["sport"].apply(lambda x: x if x in top_15_sports else "Other")
+
+# Convert the sport column to a categorical type with order based on frequency, and reverse the order
+summer_olympics["sport"] = pd.Categorical(summer_olympics["sport"], categories = summer_olympics["sport"].value_counts().index[::-1])
+
+# Move the Other category of the sport column to the beginning
+new_order = ["Other"] + [cat for cat in summer_olympics["sport"].cat.categories if cat != "Other"]
+summer_olympics["sport"] = summer_olympics["sport"].cat.reorder_categories(new_order)
+
+# Plot
+(
+    ggplot(summer_olympics, aes(x = "sport", fill = "medal"))
+    + geom_bar(color="white")
+    + coord_flip()
+    + guides(fill = guide_legend(reverse = True))
+    + scale_fill_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
+    + labs(
+      x = "",
+      y = "",
+      fill = "Medal"
+    ) 
+    + theme_minimal() 
+    + theme(
+      legend_position = "inside",
+      legend_position_inside = (0.8, 0.2),
+      legend_direction = "horizontal",
+      legend_background = element_rect(fill = "white", color = "gray"),
+      figure_size = (10, 5)
+    )
+)
+```
+
+### Row {height=40%}
+
+```{python}
+#| title: Medals by year
+# Count the occurrences of each medal per year
+summer_olympics_count = summer_olympics.groupby(["year", "medal"], observed=True).size().reset_index(name = "n")
+
+# Plot
+(
+    ggplot(summer_olympics_count, aes(x = "year", y = "n", color = "medal")) 
+    + geom_point(size = 0.5) 
+    + geom_line() 
+    + guides(color = guide_legend(reverse = True)) 
+    + scale_x_continuous(breaks = range(1896, 2020, 8)) 
+    + scale_color_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
+    + labs(x = "Year", y = "", color = "Medal") 
+    + theme_minimal() 
+    + theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 2.5)
+    )
+)
+```
+
+## Column - Medals by country {width=35%}
+
+### Row - Value boxes {height=30%}
+
+```{python}
+#| label: summer-calculate-most-medals
+
+# Filter for gold medals
+gold_medals = summer_olympics[summer_olympics['medal'] == 'Gold']
+# Group by team and count gold medals
+gold_medal_counts = gold_medals.groupby('team').size()
+# Find the team with the most gold medals
+most_gold_medals = gold_medal_counts.idxmax()
+count_most_gold_medals = gold_medal_counts.max()
+
+# Filter for silver medals
+silver_medals = summer_olympics[summer_olympics['medal'] == 'Silver']
+# Group by team and count silver medals
+silver_medal_counts = silver_medals.groupby('team').size()
+# Find the team with the most silver medals
+most_silver_medals = silver_medal_counts.idxmax()
+count_most_silver_medals = silver_medal_counts.max()
+
+# Filter for bronze medals
+bronze_medals = summer_olympics[summer_olympics['medal'] == 'Bronze']
+# Group by team and count bronze medals
+bronze_medal_counts = bronze_medals.groupby('team').size()
+# Find the team with the most bronze medals
+most_bronze_medals = bronze_medal_counts.idxmax()
+count_most_bronze_medals = bronze_medal_counts.max()
+```
+
+::: {.valuebox icon="award-fill" color="#d4af37"}
+Most golds: 
+
+`{python} str(count_most_gold_medals)`
+
+`{python} most_gold_medals`
+:::
+
+::: {.valuebox icon="award-fill" color="#c0c0c0"}
+Most silvers: 
+
+`{python} str(count_most_silver_medals)`
+
+`{python} most_silver_medals`
+:::
+
+::: {.valuebox icon="award-fill" color="#cd7f32"}
+Most bronzes: 
+
+`{python} str(count_most_bronze_medals)`
+
+`{python} most_bronze_medals`
+:::
+
+### Row - Tabsets of tables {height=70% .tabset}
+
+```{python}
+#| title: Medals by country
+# Count the occurrences of each medal per team
+summer_olympics_count = summer_olympics.groupby(["team", "medal"]).size().reset_index(name="n")
+
+# Pivot olympics_count to get medals as columns
+summer_olympics_pivot = summer_olympics_count.pivot_table(index = "team", columns = "medal", values = "n", fill_value = 0)
+
+# Calculate the total number of medals
+summer_olympics_pivot["Total"] = summer_olympics_pivot[["Bronze", "Gold", "Silver"]].sum(axis=1)
+
+# Reset the index and rearrange columns
+summer_olympics_pivot = summer_olympics_pivot.reset_index()
+summer_olympics_pivot = summer_olympics_pivot[["team", "Gold", "Silver", "Bronze", "Total"]]
+
+# Sort by Total medals, then team
+summer_olympics_sorted_descending = summer_olympics_pivot.sort_values(by=["Total", "team"], ascending=[False, True])
+summer_olympics_sorted_ascending = summer_olympics_pivot.sort_values(by=["Total", "team"], ascending=[True, True])
+
+# Remove Total
+summer_olympics_sorted_descending = summer_olympics_sorted_descending[["team", "Gold", "Silver", "Bronze"]]
+summer_olympics_sorted_ascending = summer_olympics_sorted_ascending[["team", "Gold", "Silver", "Bronze"]]
+
+# Rename the team column to Team
+summer_olympics_sorted_descending.rename(columns={"team": "Team"}, inplace=True)
+summer_olympics_sorted_ascending.rename(columns={"team": "Team"}, inplace=True)
+
+# Find top and bottom 30
+summer_olympics_sorted_descending_top30 = summer_olympics_sorted_descending.head(30)
+summer_olympics_sorted_descending_top30.reset_index(drop=True, inplace=True)
+summer_olympics_sorted_ascending_bottom30 = summer_olympics_sorted_ascending.head(30)
+summer_olympics_sorted_ascending_bottom30.reset_index(drop=True, inplace=True)
+```
+
+::: {.card title="Top 30 total medals"}
+Teams sorted in descending order of total medals.
+
+```{python}
+(
+    gt.GT(summer_olympics_sorted_descending_top30).data_color(
+        columns=["Gold", "Silver", "Bronze"],
+        palette="Oranges"
+    )
+)
+```
+:::
+
+::: {.card title="Bottom 30 total medals"}
+Teams sorted in ascending order of total medals.
+
+```{python}
+(
+    gt.GT(summer_olympics_sorted_ascending_bottom30).data_color(
+        columns=["Gold", "Silver", "Bronze"],
+        palette="Blues"
+    )
+)
+```
+:::
+
+# ❄️ Winter Olympics
+
+```{python}
+#| label: prep-winter-data
+winter_olympics = olympics[(olympics["season"] == "Winter")]
+winter_olympics.reset_index(drop=True, inplace=True)
+```
+
+## Column - Medals by sport and year {width=65%}
+
+### Row - Medals by sport {height=60%}
+
+```{python}
+#| title: Medals by sport
+#| warning: false
+# Lump the sport column to top 15 categories, grouping others as Other
+top_15_sports = winter_olympics["sport"].value_counts().nlargest(15).index
+winter_olympics["sport"] = winter_olympics["sport"].apply(lambda x: x if x in top_15_sports else "Other")
+
+# Convert the sport column to a categorical type with order based on frequency, and reverse the order
+winter_olympics["sport"] = pd.Categorical(winter_olympics["sport"], categories = winter_olympics["sport"].value_counts().index[::-1])
+
+# Move the Other category of the sport column to the beginning
+new_order = ["Other"] + [cat for cat in winter_olympics["sport"].cat.categories if cat != "Other"]
+winter_olympics["sport"] = winter_olympics["sport"].cat.reorder_categories(new_order)
+
+# Plot
+(
+    ggplot(summer_olympics, aes(x = "sport", fill = "medal"))
+    + geom_bar(color="white")
+    + coord_flip()
+    + guides(fill = guide_legend(reverse = True))
+    + scale_fill_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
+    + labs(
+      x = "",
+      y = "",
+      fill = "Medal"
+    ) 
+    + theme_minimal() 
+    + theme(
+      legend_position = "inside",
+      legend_position_inside = (0.8, 0.2),
+      legend_direction = "horizontal",
+      legend_background = element_rect(fill = "white", color = "gray"),
+      figure_size = (10, 5)
+    )
+)
+```
+
+### Row - Medals by year {height=40%}
+
+::: {.card title="Medals by year"}
+Due to World War II, no olympic games were held in 1940 and 1944.
+
+```{python}
+# Count the occurrences of each medal per year
+winter_olympics_count = winter_olympics.groupby(["year", "medal"], observed=True).size().reset_index(name = "n")
+
+# Plot
+(
+    ggplot(winter_olympics_count, aes(x = "year", y = "n", color = "medal")) 
+    + geom_point(size = 0.5) 
+    + geom_line() 
+    + guides(color = guide_legend(reverse = True)) 
+    + scale_x_continuous(breaks = range(1896, 2020, 8)) 
+    + scale_color_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
+    + labs(x = "Year", y = "", color = "Medal") 
+    + theme_minimal() 
+    + theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 2.5)
+    )
+)
+```
+:::
+
+## Column - Medals by country {width=35%}
+
+### Row - Value boxes {height=30%}
+
+```{python}
+#| label: winter-calculate-most-medals
+
+# Filter for gold medals
+gold_medals = winter_olympics[winter_olympics['medal'] == 'Gold']
+# Group by team and count gold medals
+gold_medal_counts = gold_medals.groupby('team').size()
+# Find the team with the most gold medals
+most_gold_medals = gold_medal_counts.idxmax()
+count_most_gold_medals = gold_medal_counts.max()
+
+# Filter for silver medals
+silver_medals = winter_olympics[winter_olympics['medal'] == 'Silver']
+# Group by team and count silver medals
+silver_medal_counts = silver_medals.groupby('team').size()
+# Find the team with the most silver medals
+most_silver_medals = silver_medal_counts.idxmax()
+count_most_silver_medals = silver_medal_counts.max()
+
+# Filter for bronze medals
+bronze_medals = winter_olympics[winter_olympics['medal'] == 'Bronze']
+# Group by team and count bronze medals
+bronze_medal_counts = bronze_medals.groupby('team').size()
+# Find the team with the most bronze medals
+most_bronze_medals = bronze_medal_counts.idxmax()
+count_most_bronze_medals = bronze_medal_counts.max()
+```
+
+::: {.valuebox icon="award-fill" color="#d4af37"}
+Most golds: 
+
+`{python} str(count_most_gold_medals)`
+
+`{python} most_gold_medals`
+:::
+
+::: {.valuebox icon="award-fill" color="#c0c0c0"}
+Most silvers: 
+
+`{python} str(count_most_silver_medals)`
+
+`{python} most_silver_medals`
+:::
+
+::: {.valuebox icon="award-fill" color="#cd7f32"}
+Most bronzes: 
+
+`{python} str(count_most_bronze_medals)`
+
+`{python} most_bronze_medals`
+:::
+
+### Row - Tabsets of tables {height=70% .tabset}
+
+```{python}
+#| title: Medals by country
+# Count the occurrences of each medal per team
+winter_olympics_count = winter_olympics.groupby(["team", "medal"]).size().reset_index(name="n")
+
+# Pivot olympics_count to get medals as columns
+winter_olympics_pivot = winter_olympics_count.pivot_table(index = "team", columns = "medal", values = "n", fill_value = 0)
+
+# Calculate the total number of medals
+winter_olympics_pivot["Total"] = winter_olympics_pivot[["Bronze", "Gold", "Silver"]].sum(axis=1)
+
+# Reset the index and rearrange columns
+winter_olympics_pivot = winter_olympics_pivot.reset_index()
+winter_olympics_pivot = winter_olympics_pivot[["team", "Gold", "Silver", "Bronze", "Total"]]
+
+# Sort by Total medals, then team
+winter_olympics_sorted_descending = winter_olympics_pivot.sort_values(by=["Total", "team"], ascending=[False, True])
+winter_olympics_sorted_ascending = winter_olympics_pivot.sort_values(by=["Total", "team"], ascending=[True, True])
+
+# Remove Total
+winter_olympics_sorted_descending = winter_olympics_sorted_descending[["team", "Gold", "Silver", "Bronze"]]
+winter_olympics_sorted_ascending = winter_olympics_sorted_ascending[["team", "Gold", "Silver", "Bronze"]]
+
+# Rename the team column to Team
+winter_olympics_sorted_descending.rename(columns={"team": "Team"}, inplace=True)
+winter_olympics_sorted_ascending.rename(columns={"team": "Team"}, inplace=True)
+
+# Find top and bottom 30
+winter_olympics_sorted_descending_top30 = winter_olympics_sorted_descending.head(30)
+winter_olympics_sorted_descending_top30.reset_index(drop=True, inplace=True)
+winter_olympics_sorted_ascending_bottom30 = winter_olympics_sorted_ascending.head(30)
+winter_olympics_sorted_ascending_bottom30.reset_index(drop=True, inplace=True)
+```
+
+::: {.card title="Top 30 total medals"}
+Teams sorted in descending order of total medals.
+
+```{python}
+(
+    gt.GT(winter_olympics_sorted_descending_top30).data_color(
+        columns=["Gold", "Silver", "Bronze"],
+        palette="Oranges"
+    )
+)
+```
+:::
+
+::: {.card title="Bottom 30 total medals"}
+Teams sorted in ascending order of total medals.
+
+```{python}
+(
+    gt.GT(winter_olympics_sorted_ascending_bottom30).data_color(
+        columns=["Gold", "Silver", "Bronze"],
+        palette="Blues"
+    )
+)
+```
+:::
