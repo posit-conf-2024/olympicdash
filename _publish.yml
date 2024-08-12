@@ -1,0 +1,4 @@
+- source: olympicdash-r-4.qmd
+  quarto-pub:
+    - id: e6090430-27d8-4939-92bd-b994cfb4d9b0
+      url: 'https://mine.quarto.pub/olympic-games'
