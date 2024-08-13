@@ -29,6 +29,9 @@ olympics = olympics_full[(olympics_full["season"] == "Summer") & (olympics_full[
 # Split the team column at "-" into two columns
 split_data = olympics["team"].str.split("-", n = 1, expand = True)
 olympics.loc[:, "team"] = split_data[0]
+
+# Reorder the medal column categories
+olympics["medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
 ```
 
 ## Column - Medals by sport and year
@@ -49,9 +52,6 @@ olympics["sport"] = pd.Categorical(olympics["sport"], categories = olympics["spo
 # Move the Other category of the sport column to the beginning
 new_order = ["Other"] + [cat for cat in olympics["sport"].cat.categories if cat != "Other"]
 olympics["sport"] = olympics["sport"].cat.reorder_categories(new_order)
-
-# Reorder the medal column categories
-olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
 
 # Plot
 (
