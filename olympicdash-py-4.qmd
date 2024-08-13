@@ -5,7 +5,10 @@ format:
     orientation: columns
     nav-buttons: [github]
     github: https://github.com/posit-conf-2024/olympicdash
-logo: ../images/olympics-logo.svg
+    theme:
+      - sketchy
+      - style/olympicdash.scss
+logo: images/olympics-logo.svg
 logo-alt: "Olympics logo with multicolored circles."
 ---
 
@@ -18,7 +21,7 @@ import pandas as pd
 
 ```{python}
 #| label: load-data
-olympics_full = pd.read_csv("../data/olympics.csv", low_memory = False)
+olympics_full = pd.read_csv("data/olympics.csv", low_memory = False)
 ```
 
 ```{python}
@@ -67,6 +70,9 @@ summer_olympics["sport"] = summer_olympics["sport"].cat.reorder_categories(new_o
     geom_bar() +
     coord_flip() +
     guides(fill = guide_legend(reverse = True)) +
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) +  
     labs(
         x = "",
         y = "",
@@ -78,7 +84,7 @@ summer_olympics["sport"] = summer_olympics["sport"].cat.reorder_categories(new_o
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 6.18)
+        figure_size = (11, 2)
     )
 )
 ```
@@ -97,19 +103,25 @@ summer_olympics_count = summer_olympics.groupby(["year", "medal"], observed=True
 
 # Plot
 (
-    ggplot(summer_olympics_count, aes(x = "year", y = "n", color = "medal")) +
-    geom_point(size = 0.5) +
-    geom_line() +
+    ggplot(summer_olympics_count, aes(x = "year", y = "n")) +
+    geom_line(aes(color = "medal"), size = 0.5) +
+    geom_point(aes(fill = "medal"), size = 2, color = "white") + 
     guides(color = guide_legend(reverse = True)) + 
-    scale_x_continuous(breaks = range(1896, 2020, 8)) +
-    labs(x = "Year", y = "", color = "Medal") +
-    theme_minimal() +
+    scale_x_continuous(breaks = range(1896, 2020, 8)) + 
+    scale_color_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    labs(x = "Year", y = "", color = "Medal", fill = "Medal") + 
+    theme_minimal() + 
     theme(
         legend_position = "inside",
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 3)
+        figure_size = (11, 2)
     )
 )
 ```
@@ -174,8 +186,7 @@ Most bronzes:
 ### Row - Tabsets of tables {height=70% .tabset}
 
 ```{python}
-#| label: summer-medals-by-country
-#| title: Medals by country
+#| label: summer-team-total-medals
 
 # Count the occurrences of each medal per team
 summer_olympics_count = summer_olympics.groupby(["team", "medal"]).size().reset_index(name="n")
@@ -270,6 +281,9 @@ winter_olympics["sport"] = winter_olympics["sport"].cat.reorder_categories(new_o
     geom_bar() +
     coord_flip() +
     guides(fill = guide_legend(reverse = True)) +
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) +  
     labs(
         x = "",
         y = "",
@@ -281,7 +295,7 @@ winter_olympics["sport"] = winter_olympics["sport"].cat.reorder_categories(new_o
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 6.18)
+        figure_size = (11, 2)
     )
 )
 ```
@@ -299,19 +313,25 @@ winter_olympics_count = winter_olympics.groupby(["year", "medal"], observed=True
 
 # Plot
 (
-    ggplot(winter_olympics_count, aes(x = "year", y = "n", color = "medal")) +
-    geom_point(size = 0.5) +
-    geom_line() +
+    ggplot(winter_olympics_count, aes(x = "year", y = "n")) +
+    geom_line(aes(color = "medal"), size = 0.5) +
+    geom_point(aes(fill = "medal"), size = 2, color = "white") + 
     guides(color = guide_legend(reverse = True)) + 
-    scale_x_continuous(breaks = range(1896, 2020, 8)) +
-    labs(x = "Year", y = "", color = "Medal") +
-    theme_minimal() +
+    scale_x_continuous(breaks = range(1896, 2020, 8)) + 
+    scale_color_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    labs(x = "Year", y = "", color = "Medal", fill = "Medal") + 
+    theme_minimal() + 
     theme(
         legend_position = "inside",
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 3)
+        figure_size = (11, 2)
     )
 )
 ```
@@ -376,8 +396,7 @@ Most bronzes:
 ### Row - Tabsets of tables {height=70% .tabset}
 
 ```{python}
-#| label: winter-medals-by-country
-#| title: Medals by country
+#| label: winter-team-total-medals
 
 # Count the occurrences of each medal per team
 winter_olympics_count = winter_olympics.groupby(["team", "medal"]).size().reset_index(name="n")

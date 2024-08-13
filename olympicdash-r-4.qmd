@@ -9,11 +9,11 @@ format:
       - sketchy
       - style/olympicdash.scss
 logo: images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
 ---
 
 ```{r}
 #| label: load-packages
-#| message: false
 library(tidyverse)
 library(gt)
 library(scales)
@@ -21,7 +21,6 @@ library(scales)
 
 ```{r}
 #| label: load-data
-#| message: false
 olympics_full <- read_csv("data/olympics.csv")
 ```
 
@@ -37,7 +36,7 @@ olympics <- olympics_full |>
 # 🌞 Summer Olympics
 
 ```{r}
-#| label: prep-summmer-data
+#| label: summmer-prep-data
 summer_olympics <- olympics |>
   filter(season == "Summer")
 ```
@@ -47,6 +46,7 @@ summer_olympics <- olympics |>
 ### Row - Medals by sport {height=60%}
 
 ```{r}
+#| label: summer-medals-by-sport
 #| title: Medals by sport
 #| fig-width: 8
 #| fig-height: 3
@@ -90,6 +90,7 @@ summer_olympics |>
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{r}
+#| label: summer-medals-by-year
 #| title: Medals by year
 #| fig-width: 11
 #| fig-height: 2
@@ -179,14 +180,20 @@ Most bronzes:
 
 ### Row - Tabsets of tables {height=70% .tabset}
 
+```{r}
+#| label: summer-team-total-medals
+summer_team_total_medals <- summer_olympics |>
+  count(team, medal) |>
+  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
+  mutate(total = Bronze + Gold + Silver)
+```
+
 ::: {.card title="Top 30 total medals"}
 Teams sorted in descending order of total medals.
 
 ```{r}
-summer_olympics |>
-  count(team, medal) |>
-  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
-  mutate(total = Bronze + Gold + Silver) |>
+#| label: summer-top-30-medals
+summer_team_total_medals |>
   arrange(desc(total), team) |>
   slice_head(n = 30) |>
   select(Team = team, Gold, Silver, Bronze) |>
@@ -203,11 +210,8 @@ summer_olympics |>
 Teams sorted in ascending order of total medals.
 
 ```{r}
-#| title: Bottom 30 total medals
-summer_olympics |>
-  count(team, medal) |>
-  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
-  mutate(total = Bronze + Gold + Silver) |>
+#| label: summer-bottom-30-medals
+summer_team_total_medals |>
   arrange(total, team) |>
   slice_head(n = 30) |>
   select(Team = team, Gold, Silver, Bronze) |>
@@ -223,7 +227,7 @@ summer_olympics |>
 # ❄️ Winter Olympics
 
 ```{r}
-#| label: prep-winter-data
+#| label: winter-prep-data
 winter_olympics <- olympics |>
   filter(season == "Winter")
 ```
@@ -233,6 +237,7 @@ winter_olympics <- olympics |>
 ### Row - Medals by sport {height=60%}
 
 ```{r}
+#| label: winter-medals-by-sport
 #| title: Medals by sport
 #| fig-width: 8
 #| fig-height: 3
@@ -276,6 +281,7 @@ winter_olympics |>
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{r}
+#| label: winter-medals-by-year
 #| title: Medals by year
 #| fig-width: 11
 #| fig-height: 2
@@ -322,7 +328,7 @@ winter_olympics |>
 ### Row - Value boxes {height=30%}
 
 ```{r}
-#| label: wint-calculate-most-medals
+#| label: winter-calculate-most-medals
 winter_most_golds <- winter_olympics |>
   filter(medal == "Gold") |>
   count(team, sort = TRUE) |>
@@ -365,14 +371,20 @@ Most bronzes:
 
 ### Row - Tabsets of tables {height=70% .tabset}
 
+```{r}
+#| label: winter-team-total-medals
+winter_team_total_medals <- winter_olympics |>
+  count(team, medal) |>
+  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
+  mutate(total = Bronze + Gold + Silver)
+```
+
 ::: {.card title="Top 30 total medals"}
 Teams sorted in descending order of total medals.
 
 ```{r}
-winter_olympics |>
-  count(team, medal) |>
-  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
-  mutate(total = Bronze + Gold + Silver) |>
+#| label: winter-top-30-medals
+winter_team_total_medals |>
   arrange(desc(total), team) |>
   slice_head(n = 30) |>
   select(Team = team, Gold, Silver, Bronze) |>
@@ -389,11 +401,8 @@ winter_olympics |>
 Teams sorted in ascending order of total medals.
 
 ```{r}
-#| title: Bottom 30 total medals
-winter_olympics |>
-  count(team, medal) |>
-  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
-  mutate(total = Bronze + Gold + Silver) |>
+#| label: winter-bottom-30-medals
+winter_team_total_medals |>
   arrange(total, team) |>
   slice_head(n = 30) |>
   select(Team = team, Gold, Silver, Bronze) |>

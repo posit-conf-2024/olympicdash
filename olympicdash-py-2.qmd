@@ -5,7 +5,8 @@ format:
     orientation: columns
     nav-buttons: [github]
     github: https://github.com/posit-conf-2024/olympicdash
-logo: ../images/olympics-logo.svg
+logo: images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
 ---
 
 ```{python}
@@ -17,7 +18,7 @@ import pandas as pd
 
 ```{python}
 #| label: load-data
-olympics_full = pd.read_csv("../data/olympics.csv", low_memory = False)
+olympics_full = pd.read_csv("data/olympics.csv", low_memory = False)
 ```
 
 ```{python}
@@ -31,7 +32,7 @@ split_data = olympics["team"].str.split("-", n = 1, expand = True)
 olympics.loc[:, "team"] = split_data[0]
 
 # Reorder the medal column categories
-olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
+olympics["medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
 ```
 
 ## Column - Medals by sport and year
@@ -60,17 +61,17 @@ olympics["sport"] = olympics["sport"].cat.reorder_categories(new_order)
     coord_flip() +
     guides(fill = guide_legend(reverse = True)) +
     labs(
-      x = "",
-      y = "",
-      fill = "Medal"
+        x = "",
+        y = "",
+        fill = "Medal"
     ) +
     theme_minimal() +
     theme(
-      legend_position = "inside",
-      legend_position_inside = (0.9, 0.2),
-      legend_direction = "horizontal",
-      legend_background = element_rect(fill = "white", color = "gray"),
-      figure_size = (10, 6.18)
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 6.18)
     )
 )
 ```

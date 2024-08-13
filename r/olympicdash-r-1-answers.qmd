@@ -6,6 +6,7 @@ format:
     nav-buttons: [github]
     github: https://github.com/posit-conf-2024/olympicdash
 logo: ../images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
 ---
 
 ```{r}

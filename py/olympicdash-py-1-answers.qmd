@@ -6,6 +6,7 @@ format:
     nav-buttons: [github]
     github: https://github.com/posit-conf-2024/olympicdash
 logo: ../images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
 ---
 
 ```{python}
@@ -60,17 +61,17 @@ olympics["sport"] = olympics["sport"].cat.reorder_categories(new_order)
     coord_flip() +
     guides(fill = guide_legend(reverse = True)) +
     labs(
-      x = "",
-      y = "",
-      fill = "Medal"
+        x = "",
+        y = "",
+        fill = "Medal"
     ) +
     theme_minimal() +
     theme(
-      legend_position = "inside",
-      legend_position_inside = (0.9, 0.2),
-      legend_direction = "horizontal",
-      legend_background = element_rect(fill = "white", color = "gray"),
-      figure_size = (10, 6.18)
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (10, 6.18)
     )
 )
 ```

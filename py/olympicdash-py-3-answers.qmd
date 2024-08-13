@@ -7,8 +7,9 @@ format:
     github: https://github.com/posit-conf-2024/olympicdash
     theme:
       - sketchy
-      - style/olympicdash.scss
+      - ../style/olympicdash.scss
 logo: ../images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
 ---
 
 ```{python}
@@ -33,13 +34,13 @@ split_data = olympics["team"].str.split("-", n = 1, expand = True)
 olympics.loc[:, "team"] = split_data[0]
 
 # Reorder the medal column categories
-olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
+olympics["medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
 ```
 
 # 🌞 Summer Olympics
 
 ```{python}
-#| label: prep-summmer-data
+#| label: summmer-prep-data
 summer_olympics = olympics[(olympics["season"] == "Summer")]
 summer_olympics.reset_index(drop=True, inplace=True)
 ```
@@ -49,8 +50,9 @@ summer_olympics.reset_index(drop=True, inplace=True)
 ### Row - Medals by sport {height=60%}
 
 ```{python}
+#| label: summer-medals-by-sport
 #| title: Medals by sport
-#| warning: false
+
 # Lump the sport column to top 15 categories, grouping others as Other
 top_15_sports = summer_olympics["sport"].value_counts().nlargest(15).index
 summer_olympics["sport"] = summer_olympics["sport"].apply(lambda x: x if x in top_15_sports else "Other")
@@ -64,53 +66,66 @@ summer_olympics["sport"] = summer_olympics["sport"].cat.reorder_categories(new_o
 
 # Plot
 (
-    ggplot(summer_olympics, aes(x = "sport", fill = "medal"))
-    + geom_bar(color="white")
-    + coord_flip()
-    + guides(fill = guide_legend(reverse = True))
-    + scale_fill_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
-    + labs(
-      x = "",
-      y = "",
-      fill = "Medal"
-    ) 
-    + theme_minimal() 
-    + theme(
-      legend_position = "inside",
-      legend_position_inside = (0.8, 0.2),
-      legend_direction = "horizontal",
-      legend_background = element_rect(fill = "white", color = "gray"),
-      figure_size = (10, 5)
+    ggplot(summer_olympics, aes(x = "sport", fill = "medal")) +
+    geom_bar() +
+    coord_flip() +
+    guides(fill = guide_legend(reverse = True)) +
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) +  
+    labs(
+        x = "",
+        y = "",
+        fill = "Medal"
+    ) +
+    theme_minimal() +
+    theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (11, 2)
     )
 )
 ```
 
-### Row {height=40%}
+### Row - Medals by year {height=40%}
+
+::: {.card title="Medals by year"}
+Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{python}
+#| label: summer-medals-by-year
 #| title: Medals by year
+
 # Count the occurrences of each medal per year
 summer_olympics_count = summer_olympics.groupby(["year", "medal"], observed=True).size().reset_index(name = "n")
 
 # Plot
 (
-    ggplot(summer_olympics_count, aes(x = "year", y = "n", color = "medal")) 
-    + geom_point(size = 0.5) 
-    + geom_line() 
-    + guides(color = guide_legend(reverse = True)) 
-    + scale_x_continuous(breaks = range(1896, 2020, 8)) 
-    + scale_color_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
-    + labs(x = "Year", y = "", color = "Medal") 
-    + theme_minimal() 
-    + theme(
+    ggplot(summer_olympics_count, aes(x = "year", y = "n")) +
+    geom_line(aes(color = "medal"), size = 0.5) +
+    geom_point(aes(fill = "medal"), size = 2, color = "white") + 
+    guides(color = guide_legend(reverse = True)) + 
+    scale_x_continuous(breaks = range(1896, 2020, 8)) + 
+    scale_color_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    labs(x = "Year", y = "", color = "Medal", fill = "Medal") + 
+    theme_minimal() + 
+    theme(
         legend_position = "inside",
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 2.5)
+        figure_size = (11, 2)
     )
 )
 ```
+:::
 
 ## Column - Medals by country {width=35%}
 
@@ -171,7 +186,8 @@ Most bronzes:
 ### Row - Tabsets of tables {height=70% .tabset}
 
 ```{python}
-#| title: Medals by country
+#| label: summer-team-total-medals
+
 # Count the occurrences of each medal per team
 summer_olympics_count = summer_olympics.groupby(["team", "medal"]).size().reset_index(name="n")
 
@@ -208,6 +224,7 @@ summer_olympics_sorted_ascending_bottom30.reset_index(drop=True, inplace=True)
 Teams sorted in descending order of total medals.
 
 ```{python}
+#| label: summer-top-30-medals
 (
     gt.GT(summer_olympics_sorted_descending_top30).data_color(
         columns=["Gold", "Silver", "Bronze"],
@@ -221,6 +238,7 @@ Teams sorted in descending order of total medals.
 Teams sorted in ascending order of total medals.
 
 ```{python}
+#| label: summer-bottom-30-medals
 (
     gt.GT(summer_olympics_sorted_ascending_bottom30).data_color(
         columns=["Gold", "Silver", "Bronze"],
@@ -233,7 +251,7 @@ Teams sorted in ascending order of total medals.
 # ❄️ Winter Olympics
 
 ```{python}
-#| label: prep-winter-data
+#| label: winter-prep-data
 winter_olympics = olympics[(olympics["season"] == "Winter")]
 winter_olympics.reset_index(drop=True, inplace=True)
 ```
@@ -243,8 +261,9 @@ winter_olympics.reset_index(drop=True, inplace=True)
 ### Row - Medals by sport {height=60%}
 
 ```{python}
+#| label: winter-medals-by-sport
 #| title: Medals by sport
-#| warning: false
+
 # Lump the sport column to top 15 categories, grouping others as Other
 top_15_sports = winter_olympics["sport"].value_counts().nlargest(15).index
 winter_olympics["sport"] = winter_olympics["sport"].apply(lambda x: x if x in top_15_sports else "Other")
@@ -258,23 +277,25 @@ winter_olympics["sport"] = winter_olympics["sport"].cat.reorder_categories(new_o
 
 # Plot
 (
-    ggplot(summer_olympics, aes(x = "sport", fill = "medal"))
-    + geom_bar(color="white")
-    + coord_flip()
-    + guides(fill = guide_legend(reverse = True))
-    + scale_fill_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
-    + labs(
-      x = "",
-      y = "",
-      fill = "Medal"
-    ) 
-    + theme_minimal() 
-    + theme(
-      legend_position = "inside",
-      legend_position_inside = (0.8, 0.2),
-      legend_direction = "horizontal",
-      legend_background = element_rect(fill = "white", color = "gray"),
-      figure_size = (10, 5)
+    ggplot(winter_olympics, aes(x = "sport", fill = "medal")) +
+    geom_bar() +
+    coord_flip() +
+    guides(fill = guide_legend(reverse = True)) +
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) +  
+    labs(
+        x = "",
+        y = "",
+        fill = "Medal"
+    ) +
+    theme_minimal() +
+    theme(
+        legend_position = "inside",
+        legend_position_inside = (0.9, 0.2),
+        legend_direction = "horizontal",
+        legend_background = element_rect(fill = "white", color = "gray"),
+        figure_size = (11, 2)
     )
 )
 ```
@@ -285,25 +306,32 @@ winter_olympics["sport"] = winter_olympics["sport"].cat.reorder_categories(new_o
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{python}
+#| label: winter-medals-by-year
+
 # Count the occurrences of each medal per year
 winter_olympics_count = winter_olympics.groupby(["year", "medal"], observed=True).size().reset_index(name = "n")
 
 # Plot
 (
-    ggplot(winter_olympics_count, aes(x = "year", y = "n", color = "medal")) 
-    + geom_point(size = 0.5) 
-    + geom_line() 
-    + guides(color = guide_legend(reverse = True)) 
-    + scale_x_continuous(breaks = range(1896, 2020, 8)) 
-    + scale_color_manual(values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"})   
-    + labs(x = "Year", y = "", color = "Medal") 
-    + theme_minimal() 
-    + theme(
+    ggplot(winter_olympics_count, aes(x = "year", y = "n")) +
+    geom_line(aes(color = "medal"), size = 0.5) +
+    geom_point(aes(fill = "medal"), size = 2, color = "white") + 
+    guides(color = guide_legend(reverse = True)) + 
+    scale_x_continuous(breaks = range(1896, 2020, 8)) + 
+    scale_color_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    scale_fill_manual(
+        values = {"Gold":"#d4af37", "Silver":"#c0c0c0", "Bronze":"#cd7f32"}
+    ) + 
+    labs(x = "Year", y = "", color = "Medal", fill = "Medal") + 
+    theme_minimal() + 
+    theme(
         legend_position = "inside",
         legend_position_inside = (0.9, 0.2),
         legend_direction = "horizontal",
         legend_background = element_rect(fill = "white", color = "gray"),
-        figure_size = (10, 2.5)
+        figure_size = (11, 2)
     )
 )
 ```
@@ -368,7 +396,8 @@ Most bronzes:
 ### Row - Tabsets of tables {height=70% .tabset}
 
 ```{python}
-#| title: Medals by country
+#| label: winter-team-total-medals
+
 # Count the occurrences of each medal per team
 winter_olympics_count = winter_olympics.groupby(["team", "medal"]).size().reset_index(name="n")
 
@@ -405,6 +434,7 @@ winter_olympics_sorted_ascending_bottom30.reset_index(drop=True, inplace=True)
 Teams sorted in descending order of total medals.
 
 ```{python}
+#| label: winter-top-30-medals
 (
     gt.GT(winter_olympics_sorted_descending_top30).data_color(
         columns=["Gold", "Silver", "Bronze"],
@@ -418,6 +448,7 @@ Teams sorted in descending order of total medals.
 Teams sorted in ascending order of total medals.
 
 ```{python}
+#| label: winter-bottom-30-medals
 (
     gt.GT(winter_olympics_sorted_ascending_bottom30).data_color(
         columns=["Gold", "Silver", "Bronze"],
