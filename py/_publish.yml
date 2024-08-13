@@ -1,0 +1,4 @@
+- source: olympicdash-py-3-answers.qmd
+  quarto-pub:
+    - id: bee0d5b2-e02a-4467-8ed4-ed736a1d743e
+      url: 'https://mine.quarto.pub/olympic-games-py'

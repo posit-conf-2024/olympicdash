@@ -1,0 +1,4 @@
+- source: olympicdash-r-3-answers.qmd
+  quarto-pub:
+    - id: 9c6bd19e-36f0-4798-816d-aabf629a72a1
+      url: 'https://mine.quarto.pub/olympic-games-r'
