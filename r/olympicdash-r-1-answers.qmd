@@ -10,14 +10,12 @@ logo: ../images/olympics-logo.svg
 
 ```{r}
 #| label: load-packages
-#| message: false
 library(tidyverse)
 library(gt)
 ```
 
 ```{r}
 #| label: load-data
-#| message: false
 olympics_full <- read_csv("../data/olympics.csv")
 ```
 
@@ -28,18 +26,26 @@ olympics <- olympics_full |>
     season == "Summer",
     !is.na(medal)
   ) |>
-  separate_wider_delim(cols = team, names = c("team", "suffix"), delim = "-", too_many = "merge", too_few = "align_start") |>
+  separate_wider_delim(
+    cols = team, 
+    names = c("team", "suffix"), 
+    delim = "-", 
+    too_many = "merge", 
+    too_few = "align_start"
+  ) |>
   select(-suffix) |>
   mutate(medal = fct_relevel(medal, "Bronze", "Silver", "Gold"))
 ```
 
-## Column
+## Column - Medals by sport and year
 
-### Row {height=60%}
+### Row - Medals by sport {height=60%}
 
 ```{r}
+#| label: medals-by-sport
 #| title: Medals by sport
 #| fig-width: 10
+#| fig-asp: 0.618
 olympics |>
   mutate(
     sport = fct_lump_n(sport, n = 15),
@@ -57,15 +63,17 @@ olympics |>
   ) +
   theme_minimal() +
   theme(
-    legend.position = c(0.9, 0.2),
+    legend.position = "inside",
+    legend.position.inside = c(0.9, 0.2),
     legend.direction = "horizontal",
     legend.background = element_rect(fill = "white", color = "gray")
   )
 ```
 
-### Row {height=40%}
+### Row - Medals by year {height=40%}
 
 ```{r}
+#| label: medals-by-year
 #| title: Medals by year
 #| fig-asp: 0.3
 #| fig-width: 10
@@ -83,19 +91,25 @@ olympics |>
   ) +
   theme_minimal() +
   theme(
-    legend.position = c(0.9, 0.2),
+    legend.position = "inside",
+    legend.position.inside = c(0.9, 0.2),
     legend.direction = "horizontal",
     legend.background = element_rect(fill = "white", color = "gray")
   )
 ```
 
-## Column
+## Column - Medals by country
 
 ```{r}
+#| label: medals-by-country
 #| title: Medals by country
 olympics |>
   count(team, medal) |>
-  pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
+  pivot_wider(
+    names_from = medal, 
+    values_from = n, 
+    values_fill = 0
+  ) |>
   mutate(Total = Bronze + Gold + Silver) |>
   relocate(Team = team, Gold, Silver, Bronze, Total) |>
   arrange(desc(Total), Team) |>
