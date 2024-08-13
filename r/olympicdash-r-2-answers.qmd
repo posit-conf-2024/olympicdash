@@ -33,7 +33,7 @@ olympics <- olympics_full |>
 # 🌞 Summer Olympics
 
 ```{r}
-#| label: prep-summmer-data
+#| label: summer-prep-data
 summer_olympics <- olympics |>
   filter(season == "Summer")
 ```
@@ -43,8 +43,10 @@ summer_olympics <- olympics |>
 ### Row - Medals by sport {height=60%}
 
 ```{r}
+#| label: summer-medals-by-sport
 #| title: Medals by sport
 #| fig-width: 10
+#| fig-asp: 0.618
 summer_olympics |>
   mutate(
     sport = fct_lump_n(sport, n = 15),
@@ -74,8 +76,9 @@ summer_olympics |>
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{r}
-#| fig-asp: 0.3
+#| label: summer-medals-by-year
 #| fig-width: 10
+#| fig-asp: 0.3
 summer_olympics |>
   count(year, medal) |>
   ggplot(aes(x = year, y = n, color = medal)) +
@@ -149,6 +152,7 @@ Most bronzes:
 Teams sorted in descending order of total medals.
 
 ```{r}
+#| label: summer-top-30-total-medals
 summer_olympics |>
   count(team, medal) |>
   pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
@@ -169,7 +173,7 @@ summer_olympics |>
 Teams sorted in ascending order of total medals.
 
 ```{r}
-#| title: Bottom 30 total medals
+#| label: summer-bottom-30-total-medals
 summer_olympics |>
   count(team, medal) |>
   pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
@@ -189,7 +193,7 @@ summer_olympics |>
 # ❄️ Winter Olympics
 
 ```{r}
-#| label: prep-winter-data
+#| label: winter-prep-data
 winter_olympics <- olympics |>
   filter(season == "Winter")
 ```
@@ -199,6 +203,7 @@ winter_olympics <- olympics |>
 ### Row - Medals by sport {height=60%}
 
 ```{r}
+#| label: winter-medals-by-sport
 #| title: Medals by sport
 #| fig-width: 10
 winter_olympics |>
@@ -226,12 +231,11 @@ winter_olympics |>
 
 ### Row - Medals by year {height=40%}
 
-### Row - Medals by year {height=40%}
-
 ::: {.card title="Medals by year"}
 Due to World War II, no olympic games were held in 1940 and 1944.
 
 ```{r}
+#| label: winter-medals-by-year
 #| title: Medals by year
 #| fig-asp: 0.3
 #| fig-width: 10
@@ -308,6 +312,7 @@ Most bronzes:
 Teams sorted in descending order of total medals.
 
 ```{r}
+#| label: winter-top-30-total-medals
 winter_olympics |>
   count(team, medal) |>
   pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
@@ -327,7 +332,7 @@ winter_olympics |>
 ::: {.card title="Bottom 30 total medals"}
 Teams sorted in ascending order of total medals.
 ```{r}
-#| title: Bottom 30 total medals
+#| label: winter-bottom-30-total-medals
 winter_olympics |>
   count(team, medal) |>
   pivot_wider(names_from = medal, values_from = n, values_fill = 0) |>
@@ -343,4 +348,3 @@ winter_olympics |>
   )
 ```
 :::
-

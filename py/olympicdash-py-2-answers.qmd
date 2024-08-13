@@ -30,7 +30,7 @@ split_data = olympics["team"].str.split("-", n = 1, expand = True)
 olympics.loc[:, "team"] = split_data[0]
 
 # Reorder the medal column categories
-olympics.loc[:, "medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
+olympics["medal"] = pd.Categorical(olympics["medal"], categories = ["Bronze", "Silver", "Gold"])
 ```
 
 # 🌞 Summer Olympics
